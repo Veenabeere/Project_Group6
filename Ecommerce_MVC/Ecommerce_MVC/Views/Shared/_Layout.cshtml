@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        /* Custom styles for the navbar */
+        .navbar-inverse {
+            background-color: dodgerblue; /* Change this to your desired color */
+            border-color: black; /* Change this to match or complement the background color */
+        }
+
+            .navbar-inverse .navbar-brand {
+              
+                color: yellow; /* Navbar brand  text color */
+            }
+
+            .navbar-inverse .navbar-nav > li > a {
+                color: white; /* Navbar links text color */
+            }
+
+                .navbar-inverse .navbar-nav > li > a:hover,
+                .navbar-inverse .navbar-nav > li > a:focus {
+                    color: #ffffff; /* Navbar links text color on hover/focus */
+                    background-color: #285e8e; /* Background color on hover/focus */
+                }
+
+            .navbar-inverse .navbar-toggle {
+                border-color: #ffffff; /* Navbar toggle button color */
+            }
+
+                .navbar-inverse .navbar-toggle:hover,
+                .navbar-inverse .navbar-toggle:focus {
+                    background-color: #285e8e; /* Toggle button background color on hover/focus */
+                }
+
+            .navbar-inverse .navbar-collapse,
+            .navbar-inverse .navbar-form {
+                border-color: #285e8e; /* Navbar border color */
+            }
+    </style>
+</head>
+<body>
+    <nav style="color:Highlight" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Infinite Bazar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Category", "Category", "Category")</li>
+
+                    @if (Session["CustomerId"] == null)
+                    {
+                <li>@Html.ActionLink("Cart", "Login", "Customer")</li>
+ }
+            else
+            {
+                <li><a href="@Url.Action("GetCartDetails", "Category", new { customerId = Session["customerId"] })">Cart</a></li>}
+
+                    @if (Session["CustomerId"] == null)
+                    {
+                <li>@Html.ActionLink("Orders", "Login", "Customer")</li>
+ }
+            else
+            {
+                <li><a href="@Url.Action("Orders", "Category", new { customerId = Session["customerId"] })">Orders</a></li>}
+
+
+
+
+
+
+                </ul>
+                @if (Session["CustomerId"] == null)
+                {
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Login", "Login", "Customer")</li>
+        <li>@Html.ActionLink("Register", "Register", "Customer")</li>
+    </ul> }
+                else
+                {
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("SignOut", "Signout", "Customer")</li>
+    </ul>}
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Condition of use & sale </p>
+            <h1></h1>
+        </footer>
+    </div>
+    <!-- Bootstrap and jQuery scripts -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

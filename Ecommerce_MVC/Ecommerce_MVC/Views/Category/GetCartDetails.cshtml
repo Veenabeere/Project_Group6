@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Ecommerce_MVC.Models.GetCartDetailsbyCustomer>
+
+@{ ViewBag.Title = "Product"; }
+
+<style>
+        .card {
+            width: 50rem;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+                transition: transform 0.3s;
+            }
+    </style>
+
+    <div style="background-color:  powderblue">
+
+        <h2 style="padding-bottom:50px; text-align-last:center; color:Red"><b>CART ITEMS</b></h2>
+
+        <div class="row" style="margin-left:100px">
+
+            @foreach (var item in Model)
+
+            {
+
+                <div class="col-md-4">
+
+                    <div class="card" style="width: 18rem;">
+
+
+                            <img src="@item.ProductImage" class="card-img-top" style="width:100%; height:200px;" />
+
+                            <div class="card-body">
+
+                                <p class="card-text">Price- @item.UnitCost Rs</p>
+                                <h4 class="card-title"><b>@item.ModelName</b></h4>
+
+                                <p class="card-text"> Model Number:-@item.ModelNumber</p>
+
+                                <p class="card-text">@item.Description</p>
+
+
+                                @Html.ActionLink("Buy Now", "CreateOrders", "Category")
+
+
+
+
+
+
+
+
+                            </div>
+
+                    </div>
+
+                </div>}
+
+        </div>
+
+    </div>
+

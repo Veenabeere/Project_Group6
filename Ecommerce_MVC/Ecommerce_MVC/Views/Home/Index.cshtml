@@ -1,0 +1,37 @@
+﻿<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-Q6m7C2L6oZkR7TsMQpGcw9F89d7oQ4/C9y5NE2Zd4bPBi3ZI4a0fNLCbBCVR3L3U" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy7p5L/W3j5Uq2JAAeLU6Pe8eYs9IbDAA5" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<div class="container">
+    <div id="imgcarousel" style="align-items:center" @*height=40px; width=40px*@; class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#imgcarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#imgcarousel" data-slide-to="1"></li>
+            <li data-target="#imgcarousel" data-slide-to="2"></li>
+            <li data-target="#imgcarousel" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner ">
+            <div class="item active ">
+
+                <a href="~/Category/Category"> <img src="~/images/Electronics.jpg" height="5" width="1200"></a>
+            </div>
+            <div class="item">
+                <a href="~/Category/Category"> <img src="~/images/Sports.jpg" height="50" width="1200"></a>
+            </div>
+            <div class="item">
+                <a href="~/Category/Category"> <img src="~/images/Fashion.jpg" height="50" width="1200"></a>
+            </div>
+        </div>
+        <!--add left right arrow controls-->
+        <a class="left carousel-control" href="#imgcarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#imgcarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>

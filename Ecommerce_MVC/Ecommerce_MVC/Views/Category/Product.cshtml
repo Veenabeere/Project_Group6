@@ -1,0 +1,115 @@
+﻿@*@model IEnumerable<Ecommerce_MVC.Models.Product>
+
+@{
+    ViewBag.Title = "Product";
+}
+
+<h2>Product</h2>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ModelNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductImage)
+            </td>
+
+        </tr>
+    }
+
+</table>*@
+
+
+@model IEnumerable<Ecommerce_MVC.Models.Product>
+
+@{ ViewBag.Title = "Product"; }
+
+<style>
+    .card {
+        width: 50rem;
+    }
+
+        .card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s;
+        }
+</style>
+
+<div style="background-color: lemonchiffon"> 
+
+    <h2 style="padding-bottom:50px; text-align-last:center; color:Red"><b>PRODUCTS</b></h2>
+
+    <div class="row" style="margin-left:100px">
+        @{int c = 0; }
+        @foreach (var item in Model)
+
+        {
+            c = c + 1;
+
+
+            <div class="col-md-4">
+
+                <div class="card" style="width: 18rem;">
+                    <a href="@Url.Action("GetCartDetails", "Category", new {customerId=Session["customerId"]})">
+
+                        <img src="@item.ProductImage" class="card-img-top" style="width:100%; height:200px;" />
+                    </a>
+                    <div class="card-body">
+                        <br />
+                        <p class="card-text"><b>Price- @item.UnitCost Rs</b></p>
+                        <h4 class="card-title"><b>@item.ModelName</b></h4>
+
+                        <p class="card-text"> Model Number:-@item.ModelNumber</p>
+
+                        <p class="card-text">@item.Description</p>
+                        @*<input type="number" value="qnt" id="@c" />*@
+
+                        @Html.ActionLink("AddToCart", "Addtocart1", "Category", new { ProductId = item.ProductId, }, new { @class = "btn btn-secondary", onclick = "this.href += '&qt=' + document.getElementById(" + @c + ").value;" })
+
+                        @Html.ActionLink("Buy Now", "CreateOrders", "Category", new { ProductId = item.ProductId, }, new { @class = "btn btn-secondary", onclick = "this.href += '&qt=' + document.getElementById(" + @c + ").value;" })
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,51 @@
+﻿
+@model IEnumerable<Ecommerce_MVC.Models.Category>
+
+@{
+                ViewBag.Title = "Category";
+
+}
+
+<style>
+    .card{
+        width:50rem;
+    }
+    .card:hover{
+        transform:scale(1.05);
+        transition:transform 0.3s;
+    }
+</style>
+
+<div style="background-color:lemonchiffon">
+
+    <h2 style="padding-bottom:50px; text-align-last:center; color:Red"><b>CATEGORY</b></h2>
+
+    <div class="row" style="margin-left:100px">
+
+        @foreach (var item in Model)
+
+        {
+
+            <div class="col-md-4">
+
+                <div class="card" style="width: 18rem;">
+                    <a href="@Url.Action("Product", "Category", new {categoryId=item.CategoryID,})">
+                    <img src="@item.CategoryImage" class="card-img-top" style="width:100%; height:200px;" />
+                    </a>
+                    <div class="card-body">
+
+                        <h4 class="card-title"><b>@item.CategoryName</b></h4>
+
+                        <p class="card-text">@item.Description</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+                        }
+
+    </div>
+
+</div>
+
